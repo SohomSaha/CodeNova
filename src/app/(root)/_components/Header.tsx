@@ -21,7 +21,7 @@ async function Header() {
   const convexUser = await convex.query(api.users.getUser, {
     userId: user?.id || "",
   });
-  console.log({ convexUser });
+ // console.log({ convexUser });
   return (
     <div className="relative z-10">
       <div

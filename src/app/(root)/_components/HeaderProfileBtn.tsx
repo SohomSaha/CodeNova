@@ -1,9 +1,24 @@
-import React from 'react'
+"use client";
+import { SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { User } from "lucide-react";
 
 function HeaderProfileBtn() {
   return (
-    <div>HeaderProfileBtn</div>
-  )
-}
+    <>
+      <UserButton>
+        <UserButton.MenuItems>
+          <UserButton.Link
+            label="Profile"
+            labelIcon={<User className="size-4" />}
+            href="/profile"
+          />
+        </UserButton.MenuItems>
+      </UserButton>
 
-export default HeaderProfileBtn
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+    </>
+  );
+}
+export default HeaderProfileBtn;
