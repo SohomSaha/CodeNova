@@ -5,7 +5,15 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { api } from "../../../convex/_generated/api";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronRight, Clock, Code, Link, ListVideo, Loader2, Star } from "lucide-react";
+import {
+  ChevronRight,
+  Clock,
+  Code,
+  ListVideo,
+  Loader2,
+  Star,
+} from "lucide-react";
+import Link from "next/link";
 import StarButton from "@/components/StarButton";
 import Image from "next/image";
 import NavigationHeader from "@/components/NavigationHeader";
@@ -13,21 +21,20 @@ import ProfileHeader from "./_components/ProfileHeader";
 import ProfileHeaderSkeleton from "./_components/ProfileHeaderSkeleton";
 import CodeBlock from "./_components/CodeBlock";
 
-
 const TABS = [
-    {
-      id: "executions",
-      label: "Code Executions",
-      icon: ListVideo,
-    },
-    {
-      id: "starred",
-      label: "Starred Snippets",
-      icon: Star,
-    },
-  ];
+  {
+    id: "executions",
+    label: "Code Executions",
+    icon: ListVideo,
+  },
+  {
+    id: "starred",
+    label: "Starred Snippets",
+    icon: Star,
+  },
+];
 
-function ProfilePage()  {
+function ProfilePage() {
   const { user, isLoaded } = useUser();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"executions" | "starred">(
@@ -38,12 +45,7 @@ function ProfilePage()  {
   });
 
   const starredSnippets = useQuery(api.snippets.getStarredSnippets);
-  useEffect(() => {
-    if (true) {
-      console.log(starredSnippets);
-    }
-  }, [starredSnippets]);
-  
+  console.log(starredSnippets);
 
   const {
     results: executions,
@@ -325,6 +327,6 @@ function ProfilePage()  {
       </div>
     </div>
   );
-};
+}
 
 export default ProfilePage;
