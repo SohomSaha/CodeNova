@@ -2,7 +2,7 @@
 import { useUser } from "@clerk/nextjs";
 import { usePaginatedQuery, useQuery } from "convex/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { api } from "../../../convex/_generated/api";
 import { AnimatePresence, motion } from "framer-motion";
 import {
