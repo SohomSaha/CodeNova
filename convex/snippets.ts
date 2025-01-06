@@ -78,15 +78,19 @@ export const starSnippet = mutation({
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) throw new Error("Not authenticated");
-
+    console.log(identity?.subject);
     const existing = await ctx.db
       .query("stars")
       .withIndex("by_user_id_and_snippet_id")
-      .filter(
-        (q) =>
-          q.eq(q.field("userId"), identity.subject) && q.eq(q.field("snippetId"), args.snippetId)
+      .filter((q) => 
+        q.and(
+          q.eq("userId", identity.subject),
+          q.eq("snippetId", args.snippetId.toString())
+        )
       )
       .first();
+
+      console.log(existing);
 
     if (existing) {
       await ctx.db.delete(existing._id);
@@ -181,15 +185,17 @@ export const isSnippetStarred = query({
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) return false;
-
+    console.log(identity);
     const star = await ctx.db
-      .query("stars")
-      .withIndex("by_user_id_and_snippet_id")
-      .filter(
-        (q) =>
-          q.eq(q.field("userId"), identity.subject) && q.eq(q.field("snippetId"), args.snippetId)
-      )
-      .first();
+  .query("stars")
+  .withIndex("by_user_id_and_snippet_id")
+  .filter((q) => 
+    q.and(
+      q.eq("userId", identity.subject),
+      q.eq("snippetId", args.snippetId.toString())
+    )
+  )
+  .first();
 
     return !!star;
   },
