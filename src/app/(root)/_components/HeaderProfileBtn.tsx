@@ -1,8 +1,10 @@
 "use client";
-import { SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedOut, SignInButton, UserButton,useUser } from "@clerk/nextjs";
 import { User } from "lucide-react";
 
 function HeaderProfileBtn() {
+  const {user} = useUser();
+  console.log(user);
   return (
     <>
       <UserButton>

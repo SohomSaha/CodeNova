@@ -106,4 +106,24 @@ http.route({
   }),
 });
 
+http.route({
+  path: "/test-sync-user",
+  method: "POST",
+  handler: httpAction(async (ctx) => {
+    const testData = {
+      userId: "test-user-id",
+      email: "test@example.com",
+      name: "Test User",
+    };
+
+    try {
+      await ctx.runMutation(api.users.syncUser, testData);
+      return new Response("Test user synced", { status: 200 });
+    } catch (error) {
+      console.error("Error syncing test user:", error);
+      return new Response("Error syncing user", { status: 500 });
+    }
+  }),
+});
+
 export default http;
