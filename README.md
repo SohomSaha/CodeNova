@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# CodeNova
 
-First, run the development server:
+CodeNova is a cloud-based code editor designed for developers to write, share, and discuss code in real-time. Featuring an active community, it allows users to save and manage snippets effortlessly. The platform supports multiple programming languages, with pro subscriptions unlocking Ruby and Swift. Real-time collaboration is powered by Convex DB, while Clerk handles secure authentication. Lemon Squeezy integrates seamless pro subscriptions. CodeNova also offers direct support, allowing users to contact the developer for assistance or feedback.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![image](https://github.com/user-attachments/assets/ac060d25-6de8-4267-940b-59a7061f3d70)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## 🚀 Features  
 
-To learn more about Next.js, take a look at the following resources:
+- **⚡ Code Snippet Sharing**  
+  Users can write and share code snippets with the community. Other members can view, **star**, and **comment** on these snippets, fostering meaningful discussions, code reviews, and knowledge exchange.  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **🌐 Multi-language Support**  
+  CodeNova supports a wide range of programming languages. Basic users can test and share snippets in various languages, while pro users gain access to additional languages such as **Ruby** and **Swift**, making it easier to experiment with diverse technologies.  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **💬 Active Developer Community**  
+  Users can engage with an active, growing community of developers. Share snippets, ask for feedback, participate in discussions, and contribute to collaborative learning.  
 
-## Deploy on Vercel
+- **🔐 Secure Authentication**  
+  Authentication is powered by **Clerk**, ensuring that users can securely log in and manage their sessions, with protection for their personal data.  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **💳 Pro Subscription & Payments**  
+  **Lemon Squeezy** is integrated to handle pro subscriptions securely, allowing users to access premium features like Ruby and Swift support, while ensuring safe and easy payments.  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **📞 Direct Developer Support**  
+  Users can directly contact the developer through the platform for support, bug reports, feature suggestions, and general feedback, ensuring a personalized experience and continuous improvement of the platform.  
+
+## 🌐 Live Demo  
+Check out the live version here: [CodeNova](https://code-nova-qgsg.vercel.app/)
+
+
+## 🛠 Technologies Used
+
+- **Next.js** – The main framework for building the application, enabling server-side rendering and static site generation for fast load times.  
+- **Clerk** – Used for secure user authentication and session management.  
+- **Convex DB** – A real-time database that powers live collaboration and updates for the code editor.  
+- **Lemon Squeezy** – Handles secure payments and subscription management for pro users.  
+- **Tailwind CSS** – Utilized for responsive and customizable UI design.  
+- **Vercel** – Deployed the application on Vercel for seamless hosting and scalability.  
