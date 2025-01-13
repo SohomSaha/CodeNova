@@ -12,7 +12,7 @@ import { Editor } from "@monaco-editor/react";
 import CopyButton from "./_components/CopyButton";
 
 function SnippetDetailPage() {
-  const snippetId = useParams().id;
+  const snippetId = useParams()?.id;
 
   const snippet = useQuery(api.snippets.getSnippetById, { snippetId:snippetId as Id<"snippets"> });
   const comments = useQuery(api.snippets.getComments,{snippetId:snippetId as Id<"snippets">});
