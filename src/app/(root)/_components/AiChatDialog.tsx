@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Blocks, XIcon } from "lucide-react"; // Close Icon
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import CodeBlock from "@/app/snippets/[id]/_components/CodeBlock"; // Import your CodeBlock component
-import { div } from "framer-motion/m";
-
 interface AiChatDialogProps {
   onClose: () => void;
 }
