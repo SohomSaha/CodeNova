@@ -26,7 +26,7 @@ export default async function handler(
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const data = await model.generateContent(message);
     return res.status(200).json({ response: data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error calling Gemini API:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }

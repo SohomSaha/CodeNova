@@ -84,7 +84,7 @@ export default function AiChatDialog({ onClose }: AiChatDialogProps) {
                 <div>{parseResponse(response)}</div> {/* Render parsed response */}
               </div>
             ) : (
-              <p className="text-gray-500">The AI's response will appear here...</p>
+              <p className="text-gray-500">The response will appear here...</p>
             )}
           </div>
 
