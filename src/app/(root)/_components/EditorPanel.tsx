@@ -1,44 +1,45 @@
 "use client";
-
-import { useCodeEditorStore } from '@/store/useCodeEditorStore';
-import React, { useEffect, useState } from 'react'
-import { defineMonacoThemes, LANGUAGE_CONFIG } from '../_constants';
-import { useClerk } from '@clerk/nextjs';
-import Image from 'next/image';
-import { BotIcon, RotateCcwIcon, ShareIcon, TypeIcon } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { Editor } from '@monaco-editor/react';
-import { EditorPanelSkeleton } from './EditorPanelSkeleton';
-import ShareSnippetDialog from './ShareSnippetDialog';
+import { SignedIn } from "@clerk/nextjs";
+import { useCodeEditorStore } from "@/store/useCodeEditorStore";
+import React, { useEffect, useState } from "react";
+import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
+import { useClerk } from "@clerk/nextjs";
+import Image from "next/image";
+import { BotIcon, RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
+import { motion } from "framer-motion";
+import { Editor } from "@monaco-editor/react";
+import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
+import ShareSnippetDialog from "./ShareSnippetDialog";
 import AiChatDialog from "./AiChatDialog";
 export default function EditorPanel() {
   const clerk = useClerk();
-  const [isShareDialogOpen, setIsShareDialogOpen] =useState(false);
-  const [isAiDialogOpen, setIsAiDialogOpen] = useState(false); 
+  const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
+  const [isAiDialogOpen, setIsAiDialogOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const {language, theme, fontSize,editor,setFontSize,setEditor} = useCodeEditorStore();
+  const { language, theme, fontSize, editor, setFontSize, setEditor } =
+    useCodeEditorStore();
 
   useEffect(() => {
     const savedCode = localStorage.getItem(`editor-code-${language}`);
     const newCode = savedCode || LANGUAGE_CONFIG[language].defaultCode;
-    if(editor) editor.setValue(newCode);
-  },[language,editor]);
+    if (editor) editor.setValue(newCode);
+  }, [language, editor]);
 
   useEffect(() => {
     const savedFontSize = localStorage.getItem(`editor-font-Size`);
-    if(savedFontSize) setFontSize(parseInt(savedFontSize));
-  },[setFontSize]);
-  const handleRefresh = () =>{
+    if (savedFontSize) setFontSize(parseInt(savedFontSize));
+  }, [setFontSize]);
+  const handleRefresh = () => {
     const defaultCode = LANGUAGE_CONFIG[language].defaultCode;
-    if(editor) editor.setValue(defaultCode);
+    if (editor) editor.setValue(defaultCode);
     localStorage.removeItem(`editor-code-${language}`);
   };
 
-  const handleEditorChange = (value: string|undefined) =>{
-    if(value) localStorage.setItem(`editor-code-${language}`, value);
+  const handleEditorChange = (value: string | undefined) => {
+    if (value) localStorage.setItem(`editor-code-${language}`, value);
   };
 
-  const handleFontSizeChange = (newSize: number) =>{
+  const handleFontSizeChange = (newSize: number) => {
     const size = Math.min(Math.max(newSize, 12), 24);
     setFontSize(size);
     localStorage.setItem(`editor-font-Size`, size.toString());
@@ -48,20 +49,27 @@ export default function EditorPanel() {
     setMounted(true);
   }, []);
 
-  if(!mounted) return null;
+  if (!mounted) return null;
 
   return (
-    <div className='relative'>
+    <div className="relative">
       <div className="relative bg-[#12121a]/90 backdrop-blur rounded-xl border border-white/[0.05] p-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#1e1e2e] ring-1 ring-white/5">
-              <Image src={"/" + language + ".png"} alt="Logo" width={24} height={24} />
+              <Image
+                src={"/" + language + ".png"}
+                alt="Logo"
+                width={24}
+                height={24}
+              />
             </div>
             <div>
               <h2 className="text-sm font-medium text-white">Code Editor</h2>
-              <p className="text-xs text-gray-500">Write and execute your code</p>
+              <p className="text-xs text-gray-500">
+                Write and execute your code
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -74,7 +82,9 @@ export default function EditorPanel() {
                   min="12"
                   max="24"
                   value={fontSize}
-                  onChange={(e) => handleFontSizeChange(parseInt(e.target.value))}
+                  onChange={(e) =>
+                    handleFontSizeChange(parseInt(e.target.value))
+                  }
                   className="w-20 h-1 bg-gray-600 rounded-lg cursor-pointer"
                 />
                 <span className="text-sm font-medium text-gray-400 min-w-[2rem] text-center">
@@ -93,18 +103,20 @@ export default function EditorPanel() {
               <RotateCcwIcon className="size-4 text-gray-400" />
             </motion.button>
 
-             {/* AI Button */}
-             <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => setIsAiDialogOpen(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg overflow-hidden bg-gradient-to-r
+            {/* AI Button */}
+            <SignedIn>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setIsAiDialogOpen(true)}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg overflow-hidden bg-gradient-to-r
                from-purple-500 to-purple-600 opacity-90 hover:opacity-100 transition-opacity"
-            >
-              <BotIcon className="size-4 text-white" />
-              <span className="text-sm font-medium text-white">AI</span>
-            </motion.button>
-            
+              >
+                <BotIcon className="size-4 text-white" />
+                <span className="text-sm font-medium text-white">AI</span>
+              </motion.button>
+            </SignedIn>
+
             {/* Share Button */}
             <motion.button
               whileHover={{ scale: 1.02 }}
@@ -156,8 +168,13 @@ export default function EditorPanel() {
           {!clerk.loaded && <EditorPanelSkeleton />}
         </div>
       </div>
-      {isShareDialogOpen && <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)} />}
-      {isAiDialogOpen && <AiChatDialog onClose={() => setIsAiDialogOpen(false)} />} {/* AI Dialog */}
+      {isShareDialogOpen && (
+        <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)} />
+      )}
+      {isAiDialogOpen && (
+        <AiChatDialog onClose={() => setIsAiDialogOpen(false)} />
+      )}{" "}
+      {/* AI Dialog */}
     </div>
   );
 }
