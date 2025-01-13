@@ -15,7 +15,7 @@ export default async function handler(
       .status(400)
       .json({ error: "Invalid input. Prompt is required." });
   }
-  const message = `Attached the context and question separated by ' @ '. Answer the question based only on the given context, and if code is requested, provide the code from the given context. ${prompt}`;
+  const message = `Attached the context and question separated by ' @ '. Answer the question based only on the given context, and if code is requested, provide requested code keeping in mind the given context. ${prompt}`;
 
     const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
