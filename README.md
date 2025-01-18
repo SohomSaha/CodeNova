@@ -7,7 +7,6 @@ CodeNova is a cloud-based code editor designed for developers to write, share, a
 ![image](https://github.com/user-attachments/assets/ac060d25-6de8-4267-940b-59a7061f3d70)
 
 
-
 ## 🚀 Features  
 
 - **⚡ Code Snippet Sharing**  
@@ -19,6 +18,9 @@ CodeNova is a cloud-based code editor designed for developers to write, share, a
 - **💬 Active Developer Community**  
   Users can engage with an active, growing community of developers. Share snippets, ask for feedback, participate in discussions, and contribute to collaborative learning.  
 
+- **🤖 AI-powered Code Assistance**  
+  Integrated with **Gemini.ai API**, the platform provides intelligent code suggestions and detailed explanations for any given code snippet. This feature helps users write better code and understand complex logic effortlessly.  
+
 - **🔐 Secure Authentication**  
   Authentication is powered by **Clerk**, ensuring that users can securely log in and manage their sessions, with protection for their personal data.  
 
@@ -26,7 +28,8 @@ CodeNova is a cloud-based code editor designed for developers to write, share, a
   **Lemon Squeezy** is integrated to handle pro subscriptions securely, allowing users to access premium features like Ruby and Swift support, while ensuring safe and easy payments.  
 
 - **📞 Direct Developer Support**  
-  Users can directly contact the developer through the platform for support, bug reports, feature suggestions, and general feedback, ensuring a personalized experience and continuous improvement of the platform.  
+  Users can directly contact the developer through the platform for support, bug reports, feature suggestions, and general feedback, ensuring a personalized experience and continuous improvement of the platform.
+ 
 
 ## 🌐 Live Demo  
 Check out the live version here: [CodeNova](https://code-nova-qgsg.vercel.app/)
