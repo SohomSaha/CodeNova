@@ -1,7 +1,15 @@
 
 # CodeNova
 
-CodeNova is a cloud-based code editor designed for developers to write, share, and discuss code in real-time. Featuring an active community, it allows users to save and manage snippets effortlessly. The platform supports multiple programming languages, with pro subscriptions unlocking Ruby and Swift. Real-time collaboration is powered by Convex DB, while Clerk handles secure authentication. Lemon Squeezy integrates seamless pro subscriptions. CodeNova also offers direct support, allowing users to contact the developer for assistance or feedback.
+A cloud-based, real-time code editor with a vibrant developer community. Write, share, and collaborate on code effortlessly with advanced features and multi-language support.
+
+### 🌟 Description
+CodeNova is a cloud-based code editor designed for developers to write, share, and discuss code in real-time. Featuring an active community, it allows users to save and manage snippets effortlessly. The platform supports multiple programming languages, with pro subscriptions unlocking Ruby and Swift.
+
+Real-time collaboration is powered by Convex DB, while Clerk ensures secure authentication. Lemon Squeezy integrates seamless pro subscriptions, and a new AI-powered feature leveraging Gemini.ai API provides intelligent code suggestions and explanations to enhance developer productivity.
+
+Additionally, CodeNova offers direct developer support, enabling users to provide feedback, report issues, and request features.
+
 
 
 ![image](https://github.com/user-attachments/assets/ac060d25-6de8-4267-940b-59a7061f3d70)
